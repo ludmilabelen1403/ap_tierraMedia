@@ -1,10 +1,153 @@
-.fotos{
-    margin: auto;
-    width: 960px;
-    height: 20%;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    border: none;
+    outline: none;
 }
 
-img{
+body {
+    background: rgb(212, 180, 153);
+    background: radial-gradient(circle, rgba(212, 180, 153, 1) 0%, rgba(136, 158, 175, 1) 35%, rgba(80, 109, 132, 1) 100%);
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    color: #fffcdc;
+}
 
-    height: 10%;
+.medidas {
+    margin: auto;
+    height: 30vw;
+}
+
+h1,
+h2 {
+    font-family: 'Pacifico', cursive;
+}
+
+i {
+    font-size: 4vw;
+    margin-right: 1%;
+}
+
+nav {
+    padding: 1vw;
+    display: flex;
+    justify-content: flex-start;
+    background-color: #3c5970;
+}
+
+a {
+    color: #fffcdc;
+}
+
+nav ul {
+    margin: auto;
+    display: flex;
+    width: 50%;
+    height: auto;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Mukta', sans-serif;
+}
+
+nav .desplegable li:hover {
+    color: #D4B499;
+    font-weight: bold;
+    background: #2f45567a;
+}
+
+.menu-item {
+    margin-left: 1%;
+    /* padding-left: 0%; */
+    font-size: 1.2vw;
+}
+
+.menu-item:hover {
+    color: #D4B499;
+    font-weight: bold;
+}
+
+.desplegable {
+    display: none
+}
+
+.desplegable li {
+    text-align: left;
+    margin-left: 31%;
+    font-weight: 100;
+    width: 7vw;
+    background: #2b4152b5;
+}
+
+.menu-item:hover>.desplegable {
+    display: block;
+    position: absolute;
+    width: 0%;
+    padding-left: 0;
+    text-align: left;
+    color: #fffcdc;
+}
+
+nav li {
+    text-align: center;
+}
+
+#tierra-media {
+    margin: auto;
+}
+
+.carousel {
+    z-index: -1;
+}
+
+
+/* Parques -----------*/
+
+h2,
+.cabecera p {
+    margin: 2%;
+    text-align: center;
+}
+
+.box {
+    border: solid 1px;
+    border-radius: 30px;
+    margin: 2vw;
+    padding: 2vw;
+    background-color: #3c5970;
+    color: #fffcdc;
+    box-shadow: 20px 20px 10px darkslategrey;
+    text-align: center;
+    height: 53vh;
+    overflow: auto;
+}
+
+.boxes {
+    justify-content: space-around;
+    display: flex;
+    flex-direction: row;
+}
+
+.comprar-boton {
+    text-decoration: none;
+    background: #3c597000;
+    color: #c2af9f;
+}
+
+.comprar-boton:hover {
+    font-weight: bold;
+    color: #fffcdc;
+    ;
+}
+
+.comprar {
+    display: none;
+}
+
+.comprar-boton:hover>.comprar {
+    display: block;
 }
