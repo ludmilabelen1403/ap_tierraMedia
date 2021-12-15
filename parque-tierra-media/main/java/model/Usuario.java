@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Objects;
 
+import utils.Crypt;
+
 public class Usuario {
 	private int id;
-	private String nombre;
+	private Boolean admin;
+	private String nombre, contraseña;
 	private double presupuesto;
 	private double tiempoDisponible;
 	private tipo preferencia;
@@ -27,9 +30,41 @@ public class Usuario {
 		this.preferencia = preferencia;
 	}
 	
-	public String toString() {
-		return this.nombre + " prefiere las atracciones del tipo " + this.preferencia + ", tiene " + this.presupuesto + " monedas disponibles y cuenta con " + this.tiempoDisponible + " horas disponibles";
+	public Usuario(Integer id, String username, String password, Integer coins, Double time, Boolean admin) {
+		super();
+		this.id = id;
+		this.nombre = username;
+		this.contraseña = password;
+		this.presupuesto = coins;
+		this.tiempoDisponible = time;
+		this.admin = admin;
 	}
+	
+	public Usuario( String username, String password, double coins, Double time, Boolean admin,tipo preferencia) {
+		super();
+		
+		this.nombre = username;
+		this.contraseña = password;
+		this.presupuesto = coins;
+		this.tiempoDisponible = time;
+		this.admin = admin;
+		this.preferencia = preferencia;
+		this.contraseña=password;
+		setPassword(password);
+	}
+	
+//	public Usuario(String nombre, int preferencia, double presupuesto, double tiempoDisponible) {
+//		this.nombre = nombre;
+//		this.presupuesto = presupuesto;
+//		this.tiempoDisponible = tiempoDisponible;
+//		this.preferencia_id = preferencia;
+//	}
+	
+//	public String toString() {
+//		return this.nombre + " prefiere las atracciones del tipo " + this.preferencia + ", tiene " + this.presupuesto + " monedas disponibles y cuenta con " + this.tiempoDisponible + " horas disponibles";
+//	}
+	
+	
 	
 	public int getPreferenciaId() {
 		if (this.preferencia.equals(tipo.AVENTURA)) {
@@ -44,6 +79,13 @@ public class Usuario {
 		return 0;
 	}
 	
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", admin=" + admin + ", nombre=" + nombre + ", contraseña=" + contraseña
+				+ ", presupuesto=" + presupuesto + ", tiempoDisponible=" + tiempoDisponible + ", preferencia="
+				+ preferencia + ", itinerario=" + itinerario + "]";
+	}
+
 	public int getId() {
 		return this.id;
 	}
@@ -136,4 +178,29 @@ public class Usuario {
 	public void setItinerario(ArrayList<Producto> itinerario) {
 		this.itinerario = itinerario;
 	}
+	public boolean isNull() {
+		return false;
+	}
+	public boolean checkPassword(String password) {
+		// this.password en realidad es el hash del password
+		return Crypt.match(password, this.contraseña);
+	}
+	
+	public Boolean getAdmin() {
+		return admin;
+	}
+	public Boolean isAdmin() {
+		return admin;
+	}
+	public void setAdmin(Boolean admin) {
+		this.admin = admin;
+	}
+	
+	public String getContraseña() {
+		return contraseña;
+	}
+	public void setPassword(String password) {
+		this.contraseña = Crypt.hash(password);
+	}
+	
 }

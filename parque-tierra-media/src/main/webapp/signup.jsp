@@ -10,14 +10,7 @@
       <label for="nombre">Nombre</label>
       <input type="text" class="form-control" id="nombre" name="nombre">
     </div>
-    <div class="form-group col-md-6">
-      <label for="apellido">Apellido</label>
-      <input type="text" class="form-control" id="apellido" name="apellido">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputEmail4">Email</label>
-      <input type="email" class="form-control" id="inputEmail4" name="email">
-    </div>
+   
     <div class="form-group col-md-6">
       <label for="inputPassword4">Password</label>
       <input type="password" class="form-control" id="inputPassword4" name="contraseña">
@@ -54,14 +47,14 @@
       <input type="number" class="form-control" id="tiempo" name="tiempo">
     </div>
   </div>
-  <p>Durante mi visita al la tierra media, me gustaría vivir una experiencia de tipo...</p>
+  
   </div>
        <div class="form-group col-md-4">
-      <label for="preferencia">Preferencia</label>
+      <label for="preferencia"><p>Durante mi visita a la tierra media, me gustaría vivir una experiencia de tipo...</p></label>
       <select id="preferencia" class="form-control" name="preferencia">
-        <option selected>Aventura</option>
-        <option>Paisaje</option>
-        <option>Degustacion</option>
+        <option selected>AVENTURA</option>
+        <option>DEGUSTACION</option>
+        <option>PAISAJE</option>
         
       </select>
     </div>

@@ -15,6 +15,26 @@ import persitence.UserDAO;
 
 public class UserDAOImpl implements UserDAO {
 
+	public int signUp(Usuario usuario) {
+		try {
+			String sql = "INSERT INTO Usuarios (nombre, contraseña, admin, presupuesto, tiempo, preferencia_id) VALUES (?, ?, ?, ?, ?, ?)";
+			Connection conn = ConnectionProvider.getConnection();
+
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setString(1, usuario.getNombre());
+			statement.setString(2, usuario.getContraseña());
+			statement.setBoolean(3, usuario.isAdmin());
+			statement.setDouble(4,usuario.getPresupuesto());
+			statement.setDouble(5, usuario.getTiempoDisponible());
+			statement.setInt(6, usuario.getPreferenciaId());
+			int rows = statement.executeUpdate();
+
+			return rows;
+		} catch (Exception e) {
+			throw new MissingDataException(e);
+		}
+	}
+	
 	public int insert(Usuario usuario) {
 		try {
 			String sql = "INSERT INTO Usuarios (Nombre, Presupuesto, Tiempo_disponible, Preferencia_id) VALUES (?, ?, ?, ?)";
@@ -157,9 +177,8 @@ public class UserDAOImpl implements UserDAO {
 			tipo_preferencia = tipo.DEGUSTACION;
 		} else if (tipo_preferencia_id == 3) {
 			tipo_preferencia = tipo.PAISAJE;
-		}
-		return new Usuario(resultados.getInt(1), resultados.getString(2), tipo_preferencia, resultados.getDouble(3),
-				resultados.getDouble(4));
+		} //Usuario(Integer id, String username, String password, Integer coins, Double time, Boolean admin)
+		return new Usuario(resultados.getInt(1), resultados.getString(2), resultados.getString(3),resultados.getInt(5),resultados.getDouble(6),false ); 
 	}
 
 	public int countAll() {

@@ -8,14 +8,11 @@ public class SignUpService {
 
 	public int signUp(Usuario u) {
 
-		
 		UserDAO userDAO = DAOFactory.getUserDAO();
-		int usuario = userDAO.insert(u);
+		 int row = userDAO.signUp(u);
+		 
+		 return row;
 		
-		
-		
-		return usuario;
-		
-		
+
 	}
 }
