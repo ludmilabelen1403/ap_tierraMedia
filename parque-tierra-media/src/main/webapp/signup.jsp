@@ -1,7 +1,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <body>
-<jsp:include page="partial/head.jsp"/>
+<jsp:include page="partials/head.jsp"/>
 
 <h3>Registro de usuario</h3>
 <form method="post" action="signup">

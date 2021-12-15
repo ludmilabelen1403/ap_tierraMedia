@@ -2,6 +2,7 @@ package servlets;
 
 import java.io.IOException;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.Servlet;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,16 +11,21 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Usuario;
 import model.tipo;
+import service.LoginService;
 import service.SignUpService;
 
 @WebServlet("/signup")
 public class SignUpServlet extends HttpServlet implements Servlet {
 
+	
+	private static final long serialVersionUID = 785570116967107246L;
 	private SignUpService signUpService;
+	
 
 	@Override
 	public void init() throws ServletException {
 		signUpService = new SignUpService();
+		
 		super.init();
 	}
 
@@ -34,8 +40,19 @@ public class SignUpServlet extends HttpServlet implements Servlet {
 		
 		Usuario objeto_usuario = new Usuario(nombre, contraseña, presupuesto,tiempo, false, preferencia_tipo);
 		signUpService.signUp(objeto_usuario);
+		
+		
+		req.getSession().setAttribute("username", nombre);
+		
+		
+		
+		
+		//resp.sendRedirect("/parque-tierra-media/views/attractions/index.do");
 		resp.sendRedirect("login.jsp");
 	}
+	
+	
+	
 
 	public static tipo convertirPreferencia(String preferencia) {
 		if (preferencia.equals( "AVENTURA")) {
@@ -52,27 +69,27 @@ public class SignUpServlet extends HttpServlet implements Servlet {
 //	@Override
 //	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //		String nombre = req.getParameter("nombre");
-//		String apellido = req.getParameter("apellido");
-//		String email = req.getParameter("email");
-//		String contraseña = req.getParameter("contraseña"); // arreglar
-//		String provincia = req.getParameter("provincia");
-//		String ciudad = req.getParameter("ciudad");
-//		String domicilio = req.getParameter("domicilio");
-//		Double presupuesto = Double.parseDouble(req.getParameter("presupuesto"));
-//		Double tiempo = Double.parseDouble(req.getParameter("tiempo"));
-//		String preferencia = req.getParameter("preferencia");
+////		Double presupuesto = Double.parseDouble(req.getParameter("presupuesto"));
+////		Double tiempo = Double.parseDouble(req.getParameter("tiempo"));
+////		String preferencia = req.getParameter("preferencia");
+////		String apellido = req.getParameter("apellido");
+////		String email = req.getParameter("email");
+////		String contraseña = req.getParameter("contraseña"); // arreglar
+////		String provincia = req.getParameter("provincia");
+////		String ciudad = req.getParameter("ciudad");
+////		String domicilio = req.getParameter("domicilio");
 //
 //		req.getSession().setAttribute("nombre", nombre);
-//		req.getSession().setAttribute("apellido", apellido);
-//		req.getSession().setAttribute("email", email);
-//		req.getSession().setAttribute("provincia", provincia);
-//		req.getSession().setAttribute("ciudad", ciudad);
-//		req.getSession().setAttribute("domicilio", domicilio);
-//		req.getSession().setAttribute("presupuesto", presupuesto);
-//		req.getSession().setAttribute("tiempo", tiempo);
-//		req.getSession().setAttribute("preferencia", preferencia);
+////		req.getSession().setAttribute("presupuesto", presupuesto);
+////		req.getSession().setAttribute("tiempo", tiempo);
+////		req.getSession().setAttribute("preferencia", preferencia);
+////		req.getSession().setAttribute("apellido", apellido);
+////		req.getSession().setAttribute("email", email);
+////		req.getSession().setAttribute("provincia", provincia);
+////		req.getSession().setAttribute("ciudad", ciudad);
+////		req.getSession().setAttribute("domicilio", domicilio);
 //
-//		resp.sendRedirect("index.jsp");
+//		resp.sendRedirect("/parque-tierra-media/attractions/index.do");
 //	}
 
 }

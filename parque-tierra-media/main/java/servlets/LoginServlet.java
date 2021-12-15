@@ -34,7 +34,8 @@ public class LoginServlet extends HttpServlet implements Servlet {
 	    	
 	    	if (!user.isNull()) {
 	    		req.getSession().setAttribute("user", user);
-	    		resp.sendRedirect("index.jsp");    		
+	    		resp.sendRedirect("index.jsp");    	
+//	    		resp.sendRedirect("/parque-tierra-media/attractions/index.do");
 	       	} else {
 	    		req.setAttribute("flash", "Nombre de usuario o contraseÃ±a incorrectos");
 	    		
