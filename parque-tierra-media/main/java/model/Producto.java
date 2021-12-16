@@ -4,6 +4,26 @@ import java.util.Objects;
 
 public abstract class Producto {
 	protected int id;
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public void setCosto(double costo) {
+		this.costo = costo;
+	}
+
+	public void setTiempo(double tiempo) {
+		this.tiempo = tiempo;
+	}
+
+	public void setTipoDeAtraccion(tipo tipoDeAtraccion) {
+		this.tipoDeAtraccion = tipoDeAtraccion;
+	}
+
 	protected String nombre;
 	protected double costo;
 	protected double tiempo;

@@ -1,10 +1,12 @@
 package persitence;
 
-import java.util.List;
+import java.util.ArrayList;
+import model.Atraccion;
+import model.PromocionPorcentual;
 
 public interface GenericDAO <T> {
 
-	public List<T> findAll();
+	public ArrayList<T> findAll();
 	public int countAll();
 	public int insert(T t);
 	public int update(T t);

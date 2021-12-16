@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/camil/Downloads/ap_tierraMedia-JuanBranch/ap_tierraMedia-JuanBranch/parque-tierra-media/nuevaDB.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser query pragmas" current="1"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="2105"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,10:mainItinerario"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="Atracciones" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="40"/><column index="2" value="57"/><column index="3" value="45"/><column index="4" value="53"/><column index="5" value="40"/><column index="6" value="121"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Atracciones_Promociones" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="40"/><column index="2" value="94"/><column index="3" value="90"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Itinerario" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="40"/><column index="2" value="75"/><column index="3" value="90"/><column index="4" value="94"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Promociones" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="40"/><column index="2" value="57"/><column index="3" value="77"/><column index="4" value="136"/><column index="5" value="84"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Usuarios" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="40"/><column index="2" value="57"/><column index="3" value="300"/><column index="4" value="46"/><column index="5" value="90"/><column index="6" value="52"/><column index="7" value="102"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">CREATE TABLE &quot;Atracciones&quot; (
+	&quot;ID&quot;	INTEGER NOT NULL DEFAULT 1,
+	&quot;Nombre&quot;	TEXT NOT NULL,
+	&quot;Costo&quot;	REAL NOT NULL,
+	&quot;Tiempo&quot;	REAL NOT NULL,
+	&quot;Cupo&quot;	INTEGER NOT NULL,
+	&quot;tipo_atraccion_id&quot;	INTEGER NOT NULL
+	
+);
+
+
+CREATE TABLE &quot;Promociones&quot; (
+	&quot;ID&quot;	INTEGER NOT NULL DEFAULT 1,
+	&quot;Nombre&quot;	TEXT NOT NULL,
+	&quot;Descuento&quot;	REAL,
+	&quot;Atraccion_gratis_id&quot;	INTEGER,
+	&quot;Monto_final&quot;	REAL,
+	FOREIGN KEY(&quot;Atraccion_gratis_id&quot;) REFERENCES &quot;Atracciones&quot;(&quot;ID&quot;),
+	PRIMARY KEY(&quot;ID&quot; AUTOINCREMENT)
+);
+
+
+
+
+
+CREATE TABLE &quot;Atracciones_Promociones&quot; (
+	&quot;ID&quot;	INTEGER NOT NULL DEFAULT 1,
+	&quot;Promocion_id&quot;	INTEGER NOT NULL,
+	&quot;Atraccion_id&quot;	INTEGER NOT NULL,
+	FOREIGN KEY(&quot;Promocion_id&quot;) REFERENCES &quot;Promociones&quot;(&quot;ID&quot;),
+	FOREIGN KEY(&quot;Atraccion_id&quot;) REFERENCES &quot;Atracciones&quot;(&quot;ID&quot;),
+	PRIMARY KEY(&quot;ID&quot; AUTOINCREMENT)
+);
+
+
+CREATE TABLE &quot;Itinerario&quot; (
+	&quot;ID&quot;	INTEGER NOT NULL,
+	&quot;Usuario_id&quot;	INTEGER NOT NULL,
+	&quot;Atraccion_id&quot;	INTEGER,
+	&quot;Promocion_id&quot;	INTEGER,
+	FOREIGN KEY(&quot;Promocion_id&quot;) REFERENCES &quot;Promociones&quot;(&quot;ID&quot;),
+	FOREIGN KEY(&quot;Atraccion_id&quot;) REFERENCES &quot;Atracciones&quot;(&quot;ID&quot;),
+	FOREIGN KEY(&quot;Usuario_id&quot;) REFERENCES &quot;Usuarios&quot;(&quot;ID&quot;),
+	PRIMARY KEY(&quot;ID&quot; AUTOINCREMENT)
+);
+
+
+</sql><current_tab id="0"/></tab_sql></sqlb_project>
