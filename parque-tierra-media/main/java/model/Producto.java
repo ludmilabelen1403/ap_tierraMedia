@@ -84,6 +84,8 @@ public abstract class Producto {
 		return this.cupo >= 1;
 	}
 	
+	
+	
 	public void setCupo(int cupo) {
 		this.cupo = cupo;
 	}

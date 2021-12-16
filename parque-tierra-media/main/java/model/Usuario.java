@@ -14,6 +14,8 @@ public class Usuario {
 	private double tiempoDisponible;
 	private tipo preferencia;
 	protected ArrayList<Producto> itinerario;
+	private int preferencia_id;
+	
 	
 	public Usuario(int id, String nombre, tipo preferencia, double presupuesto, double tiempoDisponible) {
 		this.id = id;
@@ -30,7 +32,7 @@ public class Usuario {
 		this.preferencia = preferencia;
 	}
 	
-	public Usuario(Integer id, String username, String password, Integer coins, Double time, Boolean admin) {
+	public Usuario(Integer id, String username, String password, Integer coins, Double time, Boolean admin, int preferencia) {
 		super();
 		this.id = id;
 		this.nombre = username;
@@ -38,6 +40,7 @@ public class Usuario {
 		this.presupuesto = coins;
 		this.tiempoDisponible = time;
 		this.admin = admin;
+		this.preferencia_id = preferencia;
 	}
 	
 	public Usuario( String username, String password, double coins, Double time, Boolean admin,tipo preferencia) {
@@ -201,6 +204,21 @@ public class Usuario {
 	}
 	public void setPassword(String password) {
 		this.contraseña = Crypt.hash(password);
+	}
+	
+	public boolean puedeComprar(Atraccion atr) {
+		return atr.getCosto() <= this.presupuesto;
+	}
+
+	public boolean tieneTiempo(Atraccion atr) {
+		return atr.getTiempo() <= this.tiempoDisponible;
+	}
+	
+
+	
+	public void comprar(Atraccion a) {
+		this.presupuesto -= a.getCosto();
+		this.tiempoDisponible -= a.getTiempo();
 	}
 	
 }

@@ -10,6 +10,7 @@ import java.util.LinkedList;
 import jdbc.ConnectionProvider;
 import model.Usuario;
 import model.tipo;
+import model.nullobjects.NullUser;
 import persitence.MissingDataException;
 import persitence.UserDAO;
 
@@ -170,15 +171,19 @@ public class UserDAOImpl implements UserDAO {
 
 	private Usuario toUsuario(ResultSet resultados) throws SQLException {
 		tipo tipo_preferencia = tipo.INDETERMINADO;
-		int tipo_preferencia_id = resultados.getInt(5);
+		int tipo_preferencia_id = resultados.getInt(7);
 		if (tipo_preferencia_id == 1) {
 			tipo_preferencia = tipo.AVENTURA;
 		} else if (tipo_preferencia_id == 2) {
 			tipo_preferencia = tipo.DEGUSTACION;
 		} else if (tipo_preferencia_id == 3) {
 			tipo_preferencia = tipo.PAISAJE;
-		} //Usuario(Integer id, String username, String password, Integer coins, Double time, Boolean admin)
-		return new Usuario(resultados.getInt(1), resultados.getString(2), resultados.getString(3),resultados.getInt(5),resultados.getDouble(6),false ); 
+		} 
+		
+		
+			//Usuario(Integer id, String username, String password, Integer coins, Double time, Boolean admin)
+		
+		return new Usuario(resultados.getInt(1), resultados.getString(2), resultados.getString(3),resultados.getInt(5),resultados.getDouble(6),false, tipo_preferencia_id); 
 	}
 
 	public int countAll() {
@@ -218,6 +223,26 @@ public class UserDAOImpl implements UserDAO {
 			int rows = statement.executeUpdate();
 
 			return rows;
+		} catch (Exception e) {
+			throw new MissingDataException(e);
+		}
+	}
+	
+	public Usuario find(Integer id) {
+		try {
+			String sql = "SELECT * FROM USUARIOS WHERE ID = ?";
+			Connection conn = ConnectionProvider.getConnection();
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setInt(1, id);
+			ResultSet resultados = statement.executeQuery();
+
+			Usuario user = NullUser.build();
+
+			if (resultados.next()) {
+				user = toUsuario(resultados);
+			}
+
+			return user;
 		} catch (Exception e) {
 			throw new MissingDataException(e);
 		}

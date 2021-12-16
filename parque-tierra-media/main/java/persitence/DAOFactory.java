@@ -1,5 +1,6 @@
 package persitence;
 
+import persistence.impl.AtraccionDAOImpl;
 import persistence.impl.UserDAOImpl;
 
 public class DAOFactory {
@@ -9,10 +10,10 @@ public class DAOFactory {
 		return new UserDAOImpl();
 	}
 
-//	public static AtraccionDAOImpl getAtraccionDAO() {
-//		return new AtraccionDAOImpl();
-//		
-//	}
+	public static AtraccionDAOImpl getAtraccionDAO() {
+		return new AtraccionDAOImpl();
+		
+	}
 //	
 //	public static PromocionPorcentualDAOImpl getPromocionesPorcentuales() {
 //		return new PromocionPorcentualDAOImpl();
