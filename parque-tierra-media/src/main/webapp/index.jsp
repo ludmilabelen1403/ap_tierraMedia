@@ -1,9 +1,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
-<jsp:include page="partials/head.jsp"/>
-<jsp:include page="partials/nav.jsp"/>
+<nav>
+<ul>
+<li> <a href = "miItinerario">mis Compras</a></li>
+
+</ul>
+
+</nav>
 <body>
-<h2>Hello World!</h2>
+<h2>Turismo Tierra Media</h2>
 
 
 

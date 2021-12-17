@@ -1,5 +1,11 @@
 package persitence;
 
+import persistence.impl.AtraccionDAOImpl;
+import persistence.impl.ItinerarioDAOImpl;
+import persistence.impl.PromocionAbsolutaDAOImpl;
+import persistence.impl.PromocionAxBDAOImpl;
+import persistence.impl.PromocionDAOImpl;
+import persistence.impl.PromocionPorcentualDAOImpl;
 import persistence.impl.UserDAOImpl;
 
 public class DAOFactory {
@@ -9,28 +15,28 @@ public class DAOFactory {
 		return new UserDAOImpl();
 	}
 
-//	public static AtraccionDAOImpl getAtraccionDAO() {
-//		return new AtraccionDAOImpl();
-//		
-//	}
-//	
-//	public static PromocionPorcentualDAOImpl getPromocionesPorcentuales() {
-//		return new PromocionPorcentualDAOImpl();
-//	}
-//	
-//	public static PromocionAxBDAOImpl getPromocionesAxB() {
-//		return new PromocionAxBDAOImpl();
-//	}
-//	
-//	public static PromocionAbsolutaDAOImpl getPromocionesAbsolutas() {
-//		return new PromocionAbsolutaDAOImpl();
-//	}
-//
-//	public static ItinerarioDAOImpl getItinerarios() {
-//		return new ItinerarioDAOImpl();
-//	}
-//	public static PromocionDAOImpl getPromociones() {
-//		return new PromocionDAOImpl();
-//	}
+public static AtraccionDAOImpl getAtraccionDAO() {
+	return new AtraccionDAOImpl();
+	
+}
+	
+	public static PromocionPorcentualDAOImpl getPromocionesPorcentuales() {
+		return new PromocionPorcentualDAOImpl();
+	}
+	
+	public static PromocionAxBDAOImpl getPromocionesAxB() {
+		return new PromocionAxBDAOImpl();
+	}
+	
+	public static PromocionAbsolutaDAOImpl getPromocionesAbsolutas() {
+		return new PromocionAbsolutaDAOImpl();
+	}
+
+	public static ItinerarioDAOImpl getItinerarios() {
+		return new ItinerarioDAOImpl();
+}
+	public static PromocionDAOImpl getPromociones() {
+	return new PromocionDAOImpl();
+}
 
 }

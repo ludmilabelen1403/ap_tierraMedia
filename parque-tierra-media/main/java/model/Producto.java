@@ -10,6 +10,8 @@ public abstract class Producto {
 	tipo tipoDeAtraccion;
 	protected int cupo;
 	
+	
+	
 	public Producto(int id, String nombre, double costo, double tiempo, tipo tipoDeAtraccion, int cupo) {
 		this.id = id;
 		this.nombre = nombre;
